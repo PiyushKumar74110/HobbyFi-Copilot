@@ -20,7 +20,7 @@ if settings.DATABASE_URL.startswith("sqlite"):
 engine = create_engine(
 
     settings.DATABASE_URL,
-
+    pool_pre_ping=True,
     **engine_kwargs
 
 )
