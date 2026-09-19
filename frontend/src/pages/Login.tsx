@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { login } from "../api/client";
-import type { CSSProperties } from "react";
+import type { CSSProperties, FormEvent } from "react";
 
 const NODES = [
   { id: "core", x: 240, y: 220, r: 6, core: true },
@@ -33,7 +33,7 @@ export default function Login() {
     return () => clearInterval(t);
   }, []);
 
-  async function handleLogin(e) {
+  async function handleLogin(e: FormEvent<HTMLFormElement>) {
     e?.preventDefault();
     try {
       setLoading(true);
