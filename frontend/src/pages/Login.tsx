@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { login } from "../api/client";
+import type { CSSProperties } from "react";
 
 const NODES = [
   { id: "core", x: 240, y: 220, r: 6, core: true },
@@ -195,7 +196,15 @@ export default function Login() {
           </p>
         </div>
 
-        <div className="hf-net-wrap" style={{ ...S.networkWrap, animation: "hf-drift 7s ease-in-out infinite", position: "relative", zIndex: 2 }}>
+        <div
+  className="hf-net-wrap"
+  style={{
+    ...S.networkWrap,
+    animation: "hf-drift 7s ease-in-out infinite",
+    position: "relative",
+    zIndex: 2
+  }}
+>
           <svg viewBox="0 0 480 440" style={S.networkSvg} aria-hidden="true">
             {EDGES.map(([from, to], i) => {
               const a = nodeById[from];
@@ -226,7 +235,13 @@ export default function Login() {
           </svg>
         </div>
 
-        <div style={{ ...S.ticker, position: "relative", zIndex: 2 }}>
+        <div
+  style={{
+    ...S.ticker,
+    position: "relative",
+    zIndex: 2,
+  }}
+>
           <span style={S.tickerDot} />
           247 vendor feeds synced in the last hour
         </div>
@@ -296,7 +311,12 @@ export default function Login() {
               />
             </div>
 
-            <div style={{ textAlign: "right", marginBottom: 25 }}>
+            <div
+  style={{
+    textAlign: "right",
+    marginBottom: 25,
+  }}
+>
               <a href="#" style={S.forgotLink}>Forgot password?</a>
             </div>
 
@@ -322,7 +342,7 @@ export default function Login() {
   );
 }
 
-const S = {
+const S:Record<string, CSSProperties> = {
   page: {
     height: "100vh",
     display: "flex",
