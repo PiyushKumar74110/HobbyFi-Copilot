@@ -6,3 +6,5 @@ requests
 chromadb
 psycopg2-binary
 python-jose
+passlib
+requests
