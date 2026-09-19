@@ -1,4 +1,4 @@
-const API_BASE_URL = "https://hobbyfi-copilot-o38r.onrender.com/";
+const API_BASE_URL = "https://hobbyfi-copilot-o38r.onrender.com";
 
 export interface ApprovalPreview {
     user?: string;
