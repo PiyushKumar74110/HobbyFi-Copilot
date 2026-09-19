@@ -1,0 +1,181 @@
+/* Reset */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-family: Inter, "Segoe UI", sans-serif;
+    background: #050816;
+    color: white;
+    overflow-x: hidden;
+}
+
+
+/* Smooth */
+
+* {
+    transition:
+        background .25s ease,
+        color .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease;
+}
+
+
+/* Scrollbar */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #091221;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(#006eff,#00bfff);
+    border-radius: 50px;
+}
+
+
+/* Animated Background */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+
+    radial-gradient(circle at 20% 20%,
+    rgba(0,180,255,.18),
+    transparent 30%),
+
+    radial-gradient(circle at 80% 70%,
+    rgba(0,120,255,.18),
+    transparent 30%),
+
+    linear-gradient(
+        135deg,
+        #050816,
+        #071425,
+        #09182F,
+        #050816
+    );
+
+    z-index:-2;
+}
+
+
+/* Grid */
+
+body::after{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    background-image:
+
+    linear-gradient(
+        rgba(255,255,255,.03) 1px,
+        transparent 1px
+    ),
+
+    linear-gradient(
+        90deg,
+        rgba(255,255,255,.03) 1px,
+        transparent 1px
+    );
+
+    background-size:40px 40px;
+
+    animation:gridMove 18s linear infinite;
+
+    z-index:-1;
+}
+
+
+@keyframes gridMove{
+
+    from{
+
+        transform:translateY(0px);
+
+    }
+
+    to{
+
+        transform:translateY(40px);
+
+    }
+
+}
+
+
+/* Buttons */
+
+button{
+
+    cursor:pointer;
+
+    border:none;
+
+}
+
+button:hover{
+
+    transform:translateY(-2px);
+
+}
+
+
+/* Inputs */
+
+input,
+textarea{
+
+    font-family:inherit;
+
+}
+
+input:focus,
+textarea:focus{
+
+    outline:none;
+
+    box-shadow:0 0 15px rgba(0,170,255,.35);
+
+}
+
+
+/* Links */
+
+a{
+
+    color:#6fd8ff;
+
+    text-decoration:none;
+
+}
+
+a:hover{
+
+    color:#8fe7ff;
+
+}
