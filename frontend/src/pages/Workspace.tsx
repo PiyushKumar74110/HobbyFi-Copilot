@@ -18,7 +18,7 @@ type RecordsResponse = {
 };
 
 const API_BASE_URL =
-    "https://hobbyfi-copilot-o38r.onrender.com" || "http://localhost:8000";
+    "https://hobbyfi-copilot-o38r.onrender.com";
 
 /**
  * Display the main workspace with Chat and Database navigation.
