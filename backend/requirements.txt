@@ -11,3 +11,4 @@ bcrypt==4.0.1
 requests
 psycopg
 google-genai
+python-multipart
