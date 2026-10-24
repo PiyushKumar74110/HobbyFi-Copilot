@@ -1,4 +1,4 @@
-const API_BASE_URL = "https://hobbyfi-copilot-o38r.onrender.com";
+const API_BASE_URL = "http://127.0.0.1:8000";
 
 export interface ApprovalPreview {
     user?: string;
@@ -159,48 +159,42 @@ export async function rejectRequest(
     return response.json();
 }
 
+
 export async function login(
     email: string,
     password: string
 ) {
+    const formData = new URLSearchParams({
+        username: email,
+        password,
+    });
 
     const response = await fetch(
         `${API_BASE_URL}/auth/login`,
         {
             method: "POST",
-
             headers: {
-                "Content-Type": "application/json",
+                "Content-Type": "application/x-www-form-urlencoded",
             },
-
-            body: JSON.stringify({
-                email,
-                password,
-            }),
+            body: formData.toString(),
         }
     );
 
     if (!response.ok) {
+        const error = await response.text();
+        console.error("LOGIN API ERROR:", response.status, error);
 
-        throw new Error(
-            "Invalid email or password"
-        );
+        throw new Error("Invalid email or password");
     }
 
     const data = await response.json();
 
-    localStorage.setItem(
-        "token",
-        data.access_token
-    );
-
-    localStorage.setItem(
-        "vendor",
-        JSON.stringify(data.vendor)
-    );
+    localStorage.setItem("token", data.access_token);
+    localStorage.setItem("vendor", JSON.stringify(data.vendor));
 
     return data;
 }
+
 
 export function logout() {
 

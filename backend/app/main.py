@@ -7,6 +7,7 @@ from app.config import settings
 from app.database import Base, engine
 
 from app.api.chat import router as chat_router
+from app.api.database import router as database_router
 from app.api.auth import router as auth_router
 from app.api.approval import router as approval_router
 
@@ -68,6 +69,7 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
+        "http://localhost:5173",
         "https://hobbyfi-copilot-1.onrender.com"
     ],
     allow_credentials=True,
@@ -88,6 +90,10 @@ app.include_router(
 
 app.include_router(
     approval_router
+)
+
+app.include_router(
+    database_router
 )
 
 ## Home Page

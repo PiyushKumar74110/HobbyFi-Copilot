@@ -1,5 +1,5 @@
 import requests
-# import google.generativeai as genai
+from google import genai
 
 from app.config import settings
 
@@ -14,7 +14,7 @@ def generate(prompt: str):
 
         "ollama": call_ollama,
 
-        # "gemini": call_gemini,
+        "gemini": call_gemini,
 
     }
 
@@ -80,38 +80,37 @@ def call_ollama(prompt: str):
         )
 
 
-# ==========================================================
-# GEMINI
-# ==========================================================
+## ==========================================================
+## GEMINI
+## ==========================================================
 
-# def call_gemini(prompt: str):
+def call_gemini(prompt: str):
 
-#     try:
+    try:
 
-#         if not settings.GOOGLE_API_KEY:
+        if not settings.GOOGLE_API_KEY:
 
-#             raise Exception(
-#                 "GOOGLE_API_KEY is missing."
-#             )
+            raise Exception(
+                "GOOGLE_API_KEY is missing."
+            )
 
-#         genai.configure(
-#             api_key=settings.GOOGLE_API_KEY
-#         )
+        client = genai.Client(
+            api_key=settings.GOOGLE_API_KEY
+        )
 
-#         model = genai.GenerativeModel(
-#             settings.GEMINI_MODEL
-#         )
+        model = settings.GEMINI_MODEL
 
-#         response = model.generate_content(
-#             prompt
-#         )
+        response = client.models.generate_content(
+            model = model,
+            contents = prompt
+        )
 
-#         return response.text
+        return response.text
 
-#     except Exception as e:
+    except Exception as e:
 
-#         raise Exception(
+        raise Exception(
 
-#             f"Gemini Error: {str(e)}"
+            f"Gemini Error: {str(e)}"
 
-#         )
+        )

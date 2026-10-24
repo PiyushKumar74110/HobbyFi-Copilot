@@ -1,19 +1,20 @@
+
 import "./App.css";
 
-import Chat from "./pages/Chat";
 import Login from "./pages/Login";
+import Workspace from "./pages/Workspace";
 
+/**
+ * Render the login screen or authenticated workspace.
+ */
 function App() {
-
     const token = localStorage.getItem("token");
 
     if (!token) {
-
         return <Login />;
-
     }
 
-    return <Chat />;
+    return <Workspace />;
 }
 
 export default App;
